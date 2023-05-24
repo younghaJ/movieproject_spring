@@ -1,0 +1,25 @@
+server:
+  port: 8070
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: https://db.lyvmhsbbjdolfbgiwwcg.supabase.co:5432/postgres
+    username: postgres
+    password: GvL5IGHBgVqtAFVK
+
+mybatis:
+  mapper-locations: classpath:mapper/*_mapper.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+springdoc:
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8
+  swagger-ui:
+    operations-sorter: method
+
