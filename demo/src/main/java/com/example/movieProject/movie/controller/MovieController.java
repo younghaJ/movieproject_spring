@@ -9,6 +9,9 @@ public class MovieController {
 
     @GetMapping("/list")
     public String getListPage() {
+
         return "/movieList";
     }
+
+    
 }

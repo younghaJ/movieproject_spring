@@ -24,6 +24,8 @@
         where movieidx = #{id}
     </select>
 
-    
-
+    <select id = "getMovieList" resultType = "com.example.movieProject.movie.entity.MovieEntity">
+        select <include refid="fullColumn"/>
+        from 'movie'
+    </select>
 </mapper>
