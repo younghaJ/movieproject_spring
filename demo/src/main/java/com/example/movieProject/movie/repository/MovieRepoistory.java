@@ -1,13 +1,15 @@
 package com.example.movieProject.movie.repository;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
+
 import com.example.movieProject.movie.entity.MovieEntity;
 
 @Repository
 @Mapper
 public interface MovieRepoistory {
-    ArrayList<MovieEntity> getMovieList();
+    List<MovieEntity> getMovieList();
+    String idx(String playTime);
 }

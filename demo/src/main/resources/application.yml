@@ -8,7 +8,7 @@ spring:
       suffix: .jsp
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: https://db.lyvmhsbbjdolfbgiwwcg.supabase.co:5432/postgres
+    url: jdbc:postgresql://db.lyvmhsbbjdolfbgiwwcg.supabase.co:5432/postgres
     username: postgres
     password: GvL5IGHBgVqtAFVK
 

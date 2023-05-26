@@ -22,7 +22,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
-	// implementation 'javax.servlet:jstl'
+	implementation 'javax.servlet:jstl'
 
 	// api 문서 자동 생성
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.15'
