@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.example.movieProject.movie.common.ResDTO;
 import com.example.movieProject.movie.entity.MovieEntity;
 import com.example.movieProject.movie.repository.MovieRepoistory;
 
@@ -12,19 +13,19 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class MovieService {
-    private final MovieRepoistory movieRepoistory;
+    private final MovieRepoistory movieRepository;
 
-    public List<MovieEntity> getMovie(){
-        List<MovieEntity> list = movieRepoistory.getMovieList();
-        System.out.println(list.get(0).getActor());
-        System.out.println(list.get(0).getAge());
-        System.out.println(list.get(0).getTitle());
-        return list;
-    } 
-    // public String idx(){
-    //     String title = movieRepoistory.idx("124");
-    //     System.out.println(title);
-    //     return title;
+    // public List<MovieEntity> getMovie(){
+    //     List<MovieEntity> list = movieRepoistory.getMovieList();
+    //     return list;
     // }
+
+    public ResDTO<?> getMovieList() {
+        return ResDTO.builder()
+                .code(0)
+                .message("영화 조회에 성공하였습니다.")
+                .data(movieRepository.getMovieList())
+                .build();
+    }
 
 }

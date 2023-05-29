@@ -18,12 +18,12 @@ public class MovieControllerApiV1 {
    
     private final MovieService movieService;
 
-    @GetMapping("/getMovieList")
-    public Model getListPage(Model model) {
-        List<MovieEntity> data = movieService.getMovie();
-        //String title = movieService.idx();
-        model.addAttribute("data", data);
-        System.out.println("컨트롤러 : "+data.get(0).getTitle());
-        return model;
-    }
+    // @GetMapping("/getMovieList")
+    // public Model getListPage(Model model) {
+    //     List<MovieEntity> data = movieService.getMovie();
+    //     //String title = movieService.idx();
+    //     model.addAttribute("data", data);
+    //     System.out.println("컨트롤러 : "+data.get(0).getTitle());
+    //     return model;
+    // }
 }

@@ -11,5 +11,6 @@ import com.example.movieProject.movie.entity.MovieEntity;
 @Mapper
 public interface MovieRepoistory {
     List<MovieEntity> getMovieList();
+    List<MovieEntity> getMovie();
     String idx(String playTime);
 }

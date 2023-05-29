@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="javax.swing.text.Document"%>
 
 <!DOCTYPE html>
 <html>
@@ -140,18 +139,33 @@
 	</div>
 </form>
 <table>
-	<tr>
-		<td align = "center" colspan = "2">
-			<td>
-				<!-- <img src="https://image.tmdb.org/t/p/w500${requestScope.data.get(0).getTitle() }">
-				<p></p> -->
-			</td>
-			
+	<c:forEach items="${data}" var="movie" varStatus="status">
+		<c:if test="${status.index % 6 == 0}">
+			<tr>
+		</c:if>
+		<td align="center">
+			<c:choose>
+				<c:when test="${fn:contains(movie.poster, 'http')}">
+					<a href="movieDetail.jsp">
+						<img src="${movie.poster}">
+						<p>${movie.title}</p>
+					</a>
+				</c:when>
+				<c:otherwise>
+					<a href="/detail">
+						<img src="${'https://image.tmdb.org/t/p/w500'}${movie.poster}">
+						<p>${movie.title}</p>
+					</a>
+				</c:otherwise>
+			</c:choose>
 		</td>
-		<td align="right">
-			<a href="javascript:list()">[처음으로]</a>
-		</td>
-	</tr>
+		<c:if test="${status.index % 6 == 5 || status.last}">
+			</tr>
+		</c:if>
+	</c:forEach>
+	<td align="right">
+		<a href="javascript:list()">[처음으로]</a>
+	</td>
 </table>
 </div>
 <hr width="750">
