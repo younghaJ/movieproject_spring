@@ -146,7 +146,7 @@
 		<td align="center">
 			<c:choose>
 				<c:when test="${fn:contains(movie.poster, 'http')}">
-					<a href="movieDetail.jsp">
+					<a href="/detail">
 						<img src="${movie.poster}">
 						<p>${movie.title}</p>
 					</a>

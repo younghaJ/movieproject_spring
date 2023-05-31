@@ -1,3 +1,4 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +14,7 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 
-    <link rel="stylesheet" type="text/css" href="css/movieDetail.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/movieDetail.css"> -->
    
 
 </head>
@@ -21,7 +22,7 @@
    <div>
 	<div class="row">
             <div class="col-4" style=" padding: 0px;">
-                <img   class="img-fluid" id="main_logo" src="img/logo1.png" alt="img" >  
+                <img class="img-fluid" id="main_logo" src="img/logo1.png" alt="img" >  
             
             </div>
             <div class="col-6" style=" padding: 0px;">
@@ -36,11 +37,11 @@
             </form>
             <div class="col-2" style=" padding: 0px;">
             <!-- <%if(userId == null){ %> -->
-              <button type="button" class="btn" onclick="javascript:location.href='../user/login.jsp'" >로그인</button>
-              <button type="button" class="btn" onclick="javascript:location.href='../user/memberJoin.jsp'">회원가입</button>
+              <button type="button" class="btn" >로그인</button>
+              <button type="button" class="btn" >회원가입</button>
            <!-- <%}else {%> -->
-              <button type="button" class="btn" onclick="javascript:location.href='../user/myPage1.jsp'" ><%=userNm %></button>
-              <button type="button" class="btn" onclick="javascript:location.href='/movieProject/logoutServlet'">로그아웃</button>
+              <button type="button" class="btn" >유저 네임</button>
+              <button type="button" class="btn" >로그아웃</button>
            <!-- <%} %>  -->
             </div>
 
@@ -48,7 +49,7 @@
         <div class="row" style=" padding: 5px;">
         </div>
     
-        <div class="row">
+        <!-- <div class="row">
           <nav>
             <ul>
               <li><a href="../user/mainpage1.jsp">홈</a></li>
@@ -59,12 +60,23 @@
               <li><a href="../board/qnaPage.jsp">문의</a></li>
             </ul>
           </nav>
-        </div>
+        </div> -->
 		
 	<div class="card">
-		<img
-			src="https://image.tmdb.org/t/p/w500<%=poster %>"
-			alt="<%=title %>" style="width: 30%">
+		<c:choose>
+			<c:when test="${fn:contains(movie.poster, 'http')}">
+				<a href="/detail">
+					<img src="${movie.poster}">
+					<p>${movie.title}</p>
+				</a>
+			</c:when>
+			<c:otherwise>
+				<a href="/detail">
+					<img src="${'https://image.tmdb.org/t/p/w500'}${movie.poster}">
+					<p>${movie.title}</p>
+				</a>
+			</c:otherwise>
+		</c:choose>
 		<div class="text-container">
 			<div class="title">
 				<h4>
@@ -94,7 +106,7 @@
 						<!-- <td><%=director %></td> -->
 					</tr>
 				</table>
-				<button  id="g-button">
+				<!-- <button  id="g-button">
 					<img id="g-image" src="img/Egood.png" alt="Button Image" width="30px" height="30px">
 				</button>
 				<button  id="b-button">
@@ -102,7 +114,7 @@
 				</button>
 				<button id="h-button">
 					<img id="h-image" src="img/empty.png" alt="heart" width="30px" height="30px">
-				</button>
+				</button> -->
 			</div>
 		</div>
 		
@@ -203,14 +215,14 @@
 			<input type="hidden" id="movietitle" value="<%=movietitle%>">
 		</div>
 		</div>
-		<form name="readFrm">
+		<!-- <form name="readFrm">
 			<input type="hidden" name="nowPage" value="<%=nowPage%>">
 			<input type="hidden" name="numPerPage" value="<%=numPerPage%>">
 			<input type="hidden" name="keyField" value="<%=keyField%>">
 			<input type="hidden" name="keyWord" value="<%=keyWord%>">
 			<input type="hidden" name="category" value="<%=category %>">
 			<input type="hidden" name="num">
-		</form>
+		</form> -->
 
 		<script>
 		(function() {
